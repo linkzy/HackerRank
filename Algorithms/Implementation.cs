@@ -1,4 +1,5 @@
 using System.Numerics;
+using System.Linq;
 
 namespace Algorithms
 {
@@ -79,6 +80,19 @@ namespace Algorithms
                 n--;
             }
             Console.WriteLine(factorial);
+        }
+
+        public static void bonAppetit(List<int> bill, int k, int b)
+        {
+
+            bill.RemoveAt(k);
+            int calculatedBill = bill.Sum() / 2;
+
+            if(calculatedBill == b)
+                Console.Write("Bon Appetit");
+            else
+                Console.Write(b - calculatedBill); 
+
         }
     }
 }

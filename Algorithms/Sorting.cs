@@ -1,3 +1,18 @@
+using System.CodeDom.Compiler;
+using System.Collections.Generic;
+using System.Collections;
+using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Runtime.Serialization;
+using System.Text.RegularExpressions;
+using System.Text;
+using System;
+
+
 namespace Algorithms
 {
     public static class Sorting
@@ -70,7 +85,71 @@ namespace Algorithms
                 }
             }
         }
-    
+
+        #region InsertionSort2
+        public static void insertionSort2(int n, List<int> arr)
+        {
+            int numberIndex = 0;
+            for (int i = 1; i < arr.Count(); i++)
+            {
+                if (arr[numberIndex] >= arr[i])
+                    Insert(arr[numberIndex], numberIndex, ref arr); 
+                else
+                    printList(arr);
+                numberIndex++;
+            }
+            Insert(arr.Last(), arr.Count(), ref arr);
+        }
+
+        public static void Insert(int n,int r, ref List<int> arr)
+        {
+            if (r == 0)
+            {
+                arr.Insert(2, n);
+                arr.RemoveAt(r);
+                printList(arr);
+                return;
+
+            }
+
+            for (int j = 0; j < arr.Count(); j++)
+            {
+                
+                if (arr[j] <= n)
+                    continue;
+                
+                if (r >= arr.Count())
+                {
+                    arr.Insert(j, n);
+                    arr.RemoveAt(r);
+                }
+                else if (j < r)
+                {
+                    arr.RemoveAt(r);
+                    arr.Insert(j, n);
+                }
+                else if(j>r)
+                {
+                    arr.Insert(j, n);
+                    arr.RemoveAt(r);
+                }
+                                
+                printList(arr);
+                break;
+            }
+        }
+
+        private static void printList(List<int> list)
+        {
+            string line = "";
+            foreach(int i in list)
+            {
+                line += i + " ";
+            }
+            Console.WriteLine(line.Trim());
+        }
+        #endregion
+
         #region QuickSort
         static List<string> bigSorting(List<string> unsorted)
         {
