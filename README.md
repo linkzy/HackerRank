@@ -1,2 +1,2 @@
 # HackerRank
-A project to save my soltuions to HarckerRank problems
+A project to save my soltuions for HarckerRank problems
