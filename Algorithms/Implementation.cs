@@ -84,7 +84,6 @@ namespace Algorithms
 
         public static void bonAppetit(List<int> bill, int k, int b)
         {
-
             bill.RemoveAt(k);
             int calculatedBill = bill.Sum() / 2;
 
@@ -92,7 +91,28 @@ namespace Algorithms
                 Console.Write("Bon Appetit");
             else
                 Console.Write(b - calculatedBill); 
+        }
 
+        public static string angryProfessor(int k, List<int> a)
+        {
+            int onTime = a.Count(x => x <= 0);
+            if (onTime < k)
+                return "YES";
+            else
+                return "NO";
+        }
+
+        public static int utopianTree(int n)
+        {
+            int r = 0;
+            for(int i = 0; i <= n; i++)
+            {
+                if (i % 2 == 0)
+                    r += 1;
+                else
+                    r *= 2;
+            }
+            return r;
         }
     }
 }
